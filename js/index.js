@@ -259,7 +259,6 @@ $(function(){
 			if(nowMusicN<0){
 				nowMusicN = $(".musicList tbody tr").size()-1;
 			}
-			console.log($(".musicList tbody tr").eq(nowMusicN))
 			$("audio").attr("src",$(".musicList tbody tr").eq(nowMusicN).attr("m4a"));
 			moveMusic($(".musicList tbody tr").eq(nowMusicN))
 
@@ -313,7 +312,7 @@ $(function(){
 					soundN = 0;
 				}
 
-				$(".musicCtrl .soundCtrl .point").css({"left":soundN});
+				$(".musicCtrl .soundCtrl .point").css({"left":soundN-6});
 				$("audio")[0].volume = soundN/100;
 				
 			})
@@ -323,6 +322,39 @@ $(function(){
 			});
 
 
+
+		})
+		//音乐快进
+		$(".musicCtrl").on("mousedown",".progress",function(e){
+			$("audio")[0].paused = true;
+				
+			
+			var musicNowTime = e.pageX - $(".progress").offset().left;
+			if(musicNowTime>500){
+				musicNowTime =500;
+			}
+			if(musicNowTime<0){
+				musicNowTime = 0;
+			}
+			$(".musicCtrl .progress .point").css({"left":musicNowTime});
+			$("audio")[0].currentTime = musicNowTime/500 * $("audio")[0].duration;
+
+			$(document).on("mousemove","",function(e){
+				var musicNowTime = e.pageX - $(".progress").offset().left;
+				if(musicNowTime>500){
+					musicNowTime =500;
+				}
+				if(musicNowTime<0){
+					musicNowTime = 0;
+				}
+				$(".musicCtrl .progress .point").css({"left":musicNowTime-6});
+				$("audio")[0].currentTime = musicNowTime/500 * $("audio")[0].duration;
+			})
+			$(document).on('mouseup', '', function(event) {
+				$(document).off('mousemove');
+				$("audio")[0].paused = false;
+
+			});
 
 		})
 		

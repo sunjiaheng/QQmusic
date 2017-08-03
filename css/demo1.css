@@ -14,7 +14,7 @@ body{background:rgb(41, 42, 43);}
 .logo img{opacity: 0.3}
 .logo img:hover{opacity: 1}
 
-.search{width: 300px;border: 1px solid white;margin: 0 auto;position: relative;top: 20px;left: 300px;height: 26px;border-radius: 10px}
+.search{line-height:28px;width: 300px;border: 1px solid white;margin: 0 auto;position: relative;top: 20px;left: 300px;height: 26px;border-radius: 10px}
 .search input{width: 300px;border: none;outline: none;background: transparent;text-indent: 1em;color: white;}
 .search ul{position: absolute; left: 0;top: 28px;background: red;width: 100%;z-index: 100;}
 .search li{text-indent: 1em;line-height: 30px;height: 30px;width: 100%;cursor: pointer;overflow: hidden;text-wrap:none;text-overflow: clip;}
