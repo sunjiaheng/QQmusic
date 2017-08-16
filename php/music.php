@@ -4,8 +4,6 @@
     date_default_timezone_set("PRC");
     $showapi_appid = '41253';  //替换此值,在官网的"我的应用"中找到相关值
     $showapi_secret = '1a68fe4aefd64059b335ae8fb94a1902';  //替换此值,在官网的"我的应用"中找到相关值
-
-    
     $paramArr = array(
          'showapi_appid'=> $showapi_appid,
          'keyword'=> $_GET['name'],

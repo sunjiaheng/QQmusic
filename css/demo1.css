@@ -68,7 +68,7 @@ body{background:rgb(41, 42, 43);}
 .musicCtrl .song span:hover{color: white;opacity: 1}
 .musicCtrl .time{position: absolute;right: 10px;top:-30px;color:#ccc;}
 .musicCtrl .sound{margin-left:20px;font-size: 26px;}
-.musicCtrl .soundCtrl{cursor:pointer;display: inline-block;height: 5px;border-bottom:1px solid #ccc;position: relative;width: 112px;top:-8px;padding-bottom:5px;}
+.musicCtrl .soundCtrl{cursor:pointer;display: inline-block;height: 5px;border-bottom:1px solid #ccc;position: relative;width: 106px;top:-8px;padding-bottom:5px;}
 .musicCtrl .soundCtrl .point{position: absolute;width: 12px;height: 12px;border-radius:50%;background: rgba(255,255,255,1);top:5px;left: 100px;cursor:pointer;}
 
 audio{width: 800px;}

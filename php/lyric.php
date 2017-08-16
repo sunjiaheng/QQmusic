@@ -1,3 +1,4 @@
+
 <?php
     header("Content-Type:text/html;charset=UTF-8");
     date_default_timezone_set("PRC");
@@ -5,7 +6,7 @@
     $showapi_secret = '1a68fe4aefd64059b335ae8fb94a1902';  //替换此值,在官网的"我的应用"中找到相关值
     $paramArr = array(
          'showapi_appid'=> $showapi_appid,
-         'musicid'=> "108497783"
+         'musicid'=> $_GET['singid']
          //添加其他参数
     );
      

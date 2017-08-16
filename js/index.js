@@ -52,6 +52,8 @@ $(function(){
 						$li.attr("albumname",info.showapi_res_body.pagebean.contentlist[i].albumname?info.showapi_res_body.pagebean.contentlist[i].albumname:"暂无");
 						$li.attr("m4a",info.showapi_res_body.pagebean.contentlist[i].m4a);
 						$(".search ul").append($li);
+						$li.attr("songid",info.showapi_res_body.pagebean.contentlist[i].songid);
+						$(".search ul").append($li);
 
 						searchListN = -1;
 
@@ -132,7 +134,8 @@ $(function(){
 		playerInfo(dom);//更新下方播放器信息
 		$(".play").removeClass('icon-bofangqikaishi play').addClass("icon-bofangqitingzhi stop");//设置播放按钮
 		nowMusicN = $(".musicList tbody tr").size()-1;//更新当前播放是第几首
-		autoMusicNowTime(dom.attr('m4a'))//调用自动更新时间
+		autoMusicNowTime(dom.attr('m4a'));//调用自动更新时间
+		loadingLyc(dom.attr('songid'));//调用ajax请求歌曲
 	}
 	//上下曲切换音乐
 	function moveMusic(dom){
@@ -303,6 +306,7 @@ $(function(){
 			$(".musicCtrl .soundCtrl .point").css({"left":soundN});
 			$("audio")[0].volume = soundN/100;
 
+
 			$(document).on("mousemove",function(e){
 				soundN = Math.floor(e.pageX-$(".soundCtrl").offset().left);
 				if(soundN>100){
@@ -314,6 +318,7 @@ $(function(){
 
 				$(".musicCtrl .soundCtrl .point").css({"left":soundN-6});
 				$("audio")[0].volume = soundN/100;
+				console.log(soundN)
 				
 			})
 
@@ -367,6 +372,20 @@ $(function(){
 		$("audio").attr("src",$(".musicList tbody tr").eq(nowMusicN).attr("m4a"));
 		moveMusic($(".musicList tbody tr").eq(nowMusicN))
 
+	}
+	function loadingLyc(songid){
+		$.ajax({
+			url: './php/lyric.php',
+			type: 'get',
+			dataType: 'json',
+			data: {
+				singid: songid
+			},
+			success:function(info){
+				
+				console.log(info.showapi_res_body.lyric)
+			}
+		})
 	}
 	
 	 
